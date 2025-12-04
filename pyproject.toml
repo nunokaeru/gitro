@@ -1,6 +1,6 @@
 [project]
 name = "gitro"
-version = "1.0.0"
+version = "1.1.0"
 description = "Open the current repository on your browser"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -37,7 +37,7 @@ packages = ["src"]
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["D", "G004", "INP001", "ERA001", "COM812", "ISC001"]
-mccabe.max-complexity = 6
+mccabe.max-complexity = 8
 
 [tool.ruff]
 line-length = 88

@@ -39,13 +39,15 @@ def main() -> int:
     if not origin:
         return 1
 
-    remote = origin.replace(":", "/").replace("git@", "https://")
+    if origin.startswith("git@"):
+        origin = origin.replace(":", "/").replace("git@", "https://")
+
     if platform.system() == "Darwin":
-        return subprocess.run(["open", remote], check=False).returncode  # noqa: S603, S607
+        return subprocess.run(["open", origin], check=False).returncode  # noqa: S603, S607
     if platform.system() == "Linux":
-        return subprocess.run(["xdg-open", remote], check=False).returncode  # noqa: S603, S607
+        return subprocess.run(["xdg-open", origin], check=False).returncode  # noqa: S603, S607
     if platform.system() == "Windows":
-        return subprocess.run(["start", remote], shell=True, check=True).returncode  # noqa: S602, S607
+        return subprocess.run(["start", origin], shell=True, check=True).returncode  # noqa: S602, S607
     return 0
 
 
